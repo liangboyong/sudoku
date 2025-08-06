@@ -1,0 +1,37 @@
+<h1>{{ title }}</h1>
+
+<div *ngIf="!selectedDifficulty">
+  <p>Select difficulty:</p>
+  <button *ngFor="let diff of difficulties" (click)="selectDifficulty(diff)">
+    {{ diff | titlecase }}
+  </button>
+</div>
+
+<div *ngIf="selectedDifficulty && puzzle && userGrid">
+  <p>Difficulty: <b>{{ selectedDifficulty | titlecase }}</b></p>
+  <table class="sudoku-grid">
+    <tr *ngFor="let row of userGrid; let i = index">
+      <td *ngFor="let cell of row; let j = index"
+          [ngClass]="{
+            'bold-bottom': (i+1) % 3 === 0 && i !== 8,
+            'bold-right': (j+1) % 3 === 0 && j !== 8
+          }">
+        <input
+          *ngIf="isEditable(i, j)"
+          type="number"
+          min="1"
+          max="9"
+          [value]="userGrid[i][j] || ''"
+          (input)="onInput(i, j, $event)"
+          class="cell-input"
+        />
+        <span *ngIf="!isEditable(i, j)" class="cell-fixed">
+          {{ cell }}
+        </span>
+      </td>
+    </tr>
+  </table>
+  <button (click)="checkSolution()">Submit</button>
+  <p>{{ result }}</p>
+  <button (click)="selectedDifficulty = null; puzzle = null; userGrid = null; result = '';">Restart</button>
+</div>
