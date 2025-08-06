@@ -112,13 +112,21 @@ cd my-angular-app
 ng serve
 ```
 - Visit `http://localhost:4200` in your browser.
+or
+```bash
+npx serve docs
+```
+- Visit `http://localhost:3000` in your browser.
+- control-C to stop the server
+
 
 ## 3. Publishing the Application on GitHub Pages
 
 ### Build for Production
 ```bash
-ng build --prod --output-path docs --base-href ./
+ng build --configuration production --output-path docs --base-href ./
 ```
+(NOT WORKING: ng build --prod --output-path docs --base-href ./)
 
 ### Add `.nojekyll` File
 ```bash
@@ -167,6 +175,7 @@ git push
 - Add `.nojekyll` file to docs.
 - Set GitHub Pages source to `main` branch and docs folder.
 - Wait a few minutes after pushing.
+- Check the 'actions' of the github to see if there is deployment errors.
 
 ### Q: Git errors (not a repository, branch not found)?
 **A:** 
