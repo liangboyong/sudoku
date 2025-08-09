@@ -1,4 +1,14 @@
-Copilot generates a tutorial to guide developers in coding an Angular application with GitHub Copilot’s help:
+# Notes
+- vs Code
+    -- Copilot extension
+    -- link to github, build project locally first, then push to github
+- use Copilot to create the Angular project
+- Copilot can analyze the code in files and provide suggestions to be inserted into the files
+- Copilot suggested code had the following issues:
+    -- version, failed at dependencies, suggested to download/install the right version
+    -- obsoleted command, build in production mode, vs Code prompts the right one
+- Copilot generates a developer guide in README.md
+- Copilot generates a tutorial to guide developers in coding an Angular application with GitHub Copilot’s help:
 
 ---
 
